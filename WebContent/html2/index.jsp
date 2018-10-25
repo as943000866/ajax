@@ -5,19 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../script/jquery-1.10.1.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$("a").click(function(){
-			var url = this.href + " h2 a";
-			var args = {"time":new Date()};
-			//任何一个 html 节点都可以使用 load 方法 来加载 Ajax, 结果将直接插入 html 节点中
-			$("#details").load(url,args);
-			
-			return false;
-		})
-		
-	})
+	window.onload = function(){
+		var aNodes = document.getElementsByTagName("a");
+		for (var i = 0; i < aNodes.length; i++) {
+			aNodes[i].onclick = function(){
+				
+				var request = new XMLHttpRequest();
+				var method = "GET";
+				var url = this.href;
+				
+				request.open(method, url);
+				request.send(null);
+				
+				request.onreadystatechange = function(){
+					if(request.readyState == 4){
+						if(request.status == 200 || request.status == 304){
+							document.getElementById("details").innerHTML = request.responseText;
+						}
+					}
+				}
+				
+				return false;
+			}
+		}
+	}
 </script>
 </head>
 <body>

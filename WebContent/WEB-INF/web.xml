@@ -9,4 +9,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ValiateUserNameServlet</display-name>
+    <servlet-name>ValiateUserNameServlet</servlet-name>
+    <servlet-class>com.atguigu.ajax.ValiateUserNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValiateUserNameServlet</servlet-name>
+    <url-pattern>/ValiateUserNameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddToCartServlet</display-name>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <servlet-class>com.atguigu.ajax.app.servlet.AddToCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddToCartServlet</servlet-name>
+    <url-pattern>/addToCart</url-pattern>
+  </servlet-mapping>
 </web-app>

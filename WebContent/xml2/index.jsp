@@ -9,14 +9,25 @@
 <script type="text/javascript">
 	$(function(){
 		$("a").click(function(){
-			var url = this.href + " h2 a";
+			
+			var url = this.href;
 			var args = {"time":new Date()};
-			//任何一个 html 节点都可以使用 load 方法 来加载 Ajax, 结果将直接插入 html 节点中
-			$("#details").load(url,args);
+			
+			//url:
+			//args: JSON 格式
+			//function: 回调函数: 当响应结束时, 回调函数被触发.
+			$.post(url, args, function(data){
+				var name = $(data).find("name").text();
+				var email = $(data).find("email").text();
+				var website = $(data).find("website").text();
+				
+				$("#details").empty().append("<h2><a href='aa:" + email + "'>" + name + "</a></h2>")
+									 .append("<a>" + website + "</a>");
+				
+			});
 			
 			return false;
-		})
-		
+		});	
 	})
 </script>
 </head>
@@ -24,13 +35,13 @@
 	<h1>People</h1>
 	<ul>
 		<li>
-			<a href="files/andy.html">andy</a>
+			<a href="files/andy.xml">andy</a>
 		</li>
 		<li>
-			<a href="files/richard.html">richard</a>
+			<a href="files/jeremy.xml">richard</a>
 		</li>
 		<li>
-			<a href="files/jeremy.html">jeremy</a>
+			<a href="files/richard.xml">jeremy</a>
 		</li>
 	</ul>
 	<div id="details">
